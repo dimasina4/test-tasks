@@ -21,10 +21,13 @@ describe('angularjs.org tests', function () {
     })
 
     it('should return to homepage', function () {
+        var checkbox = element.all(by.model("todo.done")).get(1);
+
         // browser.get('http://www.angularjs.org');
         browser.navigate().back();
         browser.navigate().back();
+        checkbox.click();
 
-        expect(browser.getCurrentUrl()).toEqual('https://angularjs.org/');
+        expect(checkbox.isSelected()).toBe(true);
     });
 });
